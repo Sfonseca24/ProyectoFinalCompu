@@ -24,45 +24,45 @@ function validarExt(){
 }
 
 
-function loadDuck_Gltf(path) {
-    // Instantiate a loader DUCK
-    const loader = new THREE.GLTFLoader();
+// function loadDuck_Gltf(path) {
+//     // Instantiate a loader DUCK
+//     const loader = new THREE.GLTFLoader();
 
-    // Optional: Provide a DRACOLoader instance to decode compressed mesh data
-    const dracoLoader = new THREE.DRACOLoader();
-    dracoLoader.setDecoderPath(path);
-    loader.setDRACOLoader(dracoLoader);
+//     // Optional: Provide a DRACOLoader instance to decode compressed mesh data
+//     const dracoLoader = new THREE.DRACOLoader();
+//     dracoLoader.setDecoderPath(path);
+//     loader.setDRACOLoader(dracoLoader);
 
-    // Load a glTF resource
-    loader.load(
-        // resource URL
-        path,
-        // called when the resource is loaded
-        function (gltf) {
+//     // Load a glTF resource
+//     loader.load(
+//         // resource URL
+//         path,
+//         // called when the resource is loaded
+//         function (gltf) {
 
-            scene.add(gltf.scene);
+//             scene.add(gltf.scene);
 
-            gltf.animations; // Array<THREE.AnimationClip>
-            gltf.scene.position.set(10, 1, 10);
-            gltf.scene.scale.set(2, 2, 2);// THREE.Group
-            gltf.scenes; // Array<THREE.Group>
-            gltf.cameras; // Array<THREE.Camera>
-            gltf.asset; // Object
+//             gltf.animations; // Array<THREE.AnimationClip>
+//             gltf.scene.position.set(10, 1, 10);
+//             gltf.scene.scale.set(2, 2, 2);// THREE.Group
+//             gltf.scenes; // Array<THREE.Group>
+//             gltf.cameras; // Array<THREE.Camera>
+//             gltf.asset; // Object
 
-        },
-        // called while loading is progressing
-        function (xhr) {
+//         },
+//         // called while loading is progressing
+//         function (xhr) {
 
-            console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+//             console.log((xhr.loaded / xhr.total * 100) + '% loaded');
 
-        },
-        // called when loading has errors
-        function (error) {
+//         },
+//         // called when loading has errors
+//         function (error) {
 
-            console.log('An error happened');
+//             console.log('An error happened');
 
-        }
-    );
+//         }
+//     );
 
 
-}
+// }
