@@ -6,6 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Proyecto Final Three.js</title>
   <script src="/src/js/main.js"></script>
+  <script src="/src/libs/three.js-master/build/three.min.js"></script>
+  <script src="/src/libs/controls/OrbitControls.js"></script>
+
+  <!--obj y mtl-->
+  <script src="/src/libs/load/OBJLoader.js"></script>
+  <script src="/src/libs/load/MTLLoader.js"></script>
+
+  <!-- gltf loader -->
+  <script src="/src/libs/load/DRACOLoader.js"></script>
+  <script src="/src/libs/load/GLTFLoader.js"></script>
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="shortcut icon" href="/src/imag/logopage.png" type="image/png">
@@ -19,16 +30,16 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
-  
+
 </head>
 
-<body>
+<body onload="startScene()">
   <!--nav bar-->
   <nav class="nav">
     <a href="/index.html"><img class="logo" src="/src/imag/logonav.png" alt="logo navbar"></a>
     <div>
       <ul>
-        <button id="boton-save" type="button" data-toggle="modal" data-target="#exampleModalCenter">
+        <button id="boton-save" type="button" data-toggle="modal" data-target="#exampleModalCenter" >
           <img class="logo" src="/src/imag/save.png" alt="">
         </button>
       </ul>
@@ -48,12 +59,16 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body" id="visorArchivo">
+        <div class="modal-body" >
           ...
         </div>
         <div class="modal-footer">
-          <label class="btn-file" for="archivoInput">Previsualizar</label>
-          <input type="file" id="archivoInput" onchange="return validarExt()" style="display: none;">
+          <form action="">
+            <label class="btn-file" for="archivoInput">Previsualizar</label>
+            <input type="file" id="archivoInput" onchange="return validarExt()" style="display: none;">
+            <button type="button" >subir</button>
+          </form>
+
           <!--div class="file">
             <h2 id="nombre"></h2>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -62,18 +77,32 @@
           <input type="file" id="archivo" style="display: none;">
 
           </div--->
-          
+
+
         </div>
       </div>
     </div>
   </div>
 
+
+<!--canvas-->
+<canvas id="cargarModels"></canvas>
+
+<!-- <input type="file" id="cargar3" onchange="return Cargar()" value="Cargar carpeta">
+<div id="directorio"></div> -->
+
+<div class="modal-body" id="visorArchivo" >
+  ...
+</div>
+
+
+<!--Footer pagina-->
   <div class="container">
     <footer class="navbar fixed-bottom text-center text-lg-start" style="background-color: #c5c5c5;">
-        <p class="text-center text-muted">®company 2023, Santiago Fonseca Galvis</p>
-        <p>By Joker</p>
+      <p class="text-center text-muted">®company 2023, Santiago Fonseca Galvis & Alejandro Rivera Lasso</p>
+      <p>By Joker</p>
     </footer>
-</div> 
+  </div>
 </body>
 
 </html>
