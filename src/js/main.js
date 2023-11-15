@@ -50,7 +50,7 @@ const size = 20,
         animate();
         
         //Duck Model
-        loadDuck_Gltf("../src/other", "../src/other/Duck.gltf");
+        // loadDuck_Gltf("../src/other", "../src/other/Duck.gltf");
         //mousemove camera
         //document.getElementById("Models3d").addEventListener("mousemove", moveCamera);
     
@@ -145,7 +145,7 @@ function validarExt() {
             path = e.target.result;
 
             console.log(path);
-            loadGltf("./src/other/");
+            loadDuck_Gltf("../src/other/", "../src/other/Duck.gltf");
             // var cod=path.split(',')[1];
         };
         ver.readAsDataURL(archivoInput.files[0]);
