@@ -145,8 +145,16 @@ function validarExt() {
             path = e.target.result;
 
             console.log(path);
+            var remplazo = path.replace("application/octet-stream", "model/gltf-binary");
+            console.log(remplazo);
             loadDuck_Gltf("../src/other/", "../src/other/Duck.gltf");
-            // var cod=path.split(',')[1];
+            var cod=remplazo.split(',')[1];
+            console.log("desencrip: "+cod);
+            var string = path+".gltf";
+
+            console.log("este es estring: "+string);
+            var desencrip = atob(cod);
+            console.log(desencrip);
         };
         ver.readAsDataURL(archivoInput.files[0]);
         //ver.readAsText(archivoInput.files[0]);
