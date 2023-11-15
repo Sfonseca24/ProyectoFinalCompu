@@ -24,47 +24,13 @@ function startScene() {
 
     //Orbit controls
     // controls = new THREE.OrbitControls(camera, renderer.domElement);
-      
-    //camera.position.set(13, 7, 13);
+
     camera.position.set(0, 3, 0);
-
-    // controls.update();
-
-    //Grid Helper
-    // const gridHelper = new THREE.GridHelper(size, divisions);
-    // scene.add(gridHelper);
-
-    //Axes Helper
-    // const axesHelper = new THREE.AxesHelper(5);
-    // scene.add(axesHelper);
 
     const lightAmbient = new THREE.AmbientLight(0xF00FFFF); // soft white light
     scene.add(lightAmbient);
 
-    // const light = new THREE.PointLight( 0xffffff, 1, 100 );
-    // light.position.set( 5,10,10 );
-    // scene.add( light );
-
     animate();
-
-    // Escenario
-    //loadModel_objMtl("../src/models/obj_mtl/escenario/", "escenario.obj", "escenario.mtl", 3);
-    // Human Model
-    //loadModel_objMtl("../src/models/obj_mtl/personaje/", "personaje.obj", "personaje.mtl", 2);
-    // Duck Model
-    // if (path == null){
-    //     console.log("path no tiene aun direccion, suba el archivo");
-    // }
-        loadGltf(path);
-    
-    
-
-    // // Establecer la duración del temporizador en segundos (por ejemplo, 60 segundos)
-    // const duration = 60;
-    // startTimer(duration);
-
-    // // My Player
-    // createPlayer();
 }
 
 function animate() {
@@ -146,16 +112,14 @@ function validarExt(){
         if (archivoInput.files && archivoInput.files[0]){
             var ver = new FileReader();
             ver.onload=function(e){
-                document.getElementById('visorArchivo').innerHTML = '<embed src="'+e.target.result+'"width= "200" height= "200">';
+                //document.getElementById('visorArchivo').innerHTML = '<embed src="'+e.target.result+'"width= "200" height= "200">';
                 path = e.target.result;
-                var cod=path.split(',')[1];
-
-                console.log("descodificado: "+path);
+                //var cod=path.split(',')[1];
             };
-            ver.readAsDataURL(archivoInput.files[0]);
+            var ver2 =ver.readAsDataURL(archivoInput.files[0]);
             //ver.readAsText(archivoInput.files[0]);
             // path = URL.createObjectURL(archivoInput.files[0]);
-            console.log("este es path: "+path);
+            console.log("este es path final: "+ver2);
         }
     // }    
 }
