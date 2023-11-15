@@ -11,6 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Proyecto Final Three.js</title>
   <script src="/src/js/main.js"></script>
+  <script src="/src/js/style-page.js"></script>
   <script src="/src/libs/three.js-master/build/three.min.js"></script>
   <script src="/src/libs/controls/OrbitControls.js"></script>
 
@@ -39,8 +40,26 @@
 </head>
 
 <body onload="startScene()">
-  <!--nav bar-->
+  <!--menu desplegable-->
+
+  <div id="sideNavigation" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="#">About</a>
+    <a href="#">Features</a>
+    <a href="#">Contact Us</a>
+  </div>
+
   <nav class="nav">
+
+    <a href="#" onclick="openNav()">
+      <svg width="30" height="30" id="icoOpen">
+          <path d="M0,5 30,5" stroke="#000" stroke-width="5"/>
+          <path d="M0,14 30,14" stroke="#000" stroke-width="5"/>
+          <path d="M0,23 30,23" stroke="#000" stroke-width="5"/>
+      </svg>
+    </a>
+    <div></div>
+    <!--logo page-->
     <a href="/index.html"><img class="logo" src="/src/imag/logonav.png" alt="logo navbar"></a>
     <div>
       <ul>
@@ -51,16 +70,7 @@
     </div>
     <a class="nav-link" href="#"></a>
     <a class="nav-link disabled" aria-disabled="true"></a>
-
-    <!--menu desplegable-->
-    <ul id="menu">
-      <h1>Menu</h1>
-      <li><a href="#">Inicio</a></li>
-      <li><a href="#">Sobre Nosotros</a></li>
-      <li><a href="#">Servicios</a></li>
-      <li><a href="#">Blog</a></li>
-      <li><a href="#">Contacto</a></li>
-    </ul>
+    
   </nav>
 
 <!-- boton input
