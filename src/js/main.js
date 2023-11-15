@@ -131,6 +131,8 @@ function loadGltf(path2, nameGltfGet) {
 
 }
 
+//obtener archivo 3d y su direccion para cargar
+
 
 function validarExt(){
     var archivoInput = document.getElementById('archivoInput');
