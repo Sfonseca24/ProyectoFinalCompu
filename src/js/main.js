@@ -3,7 +3,7 @@ var scene = null,
     renderer = null,
     controls = null
     prueba = null;
-    //path;
+    path;
 
 const size = 20,
     divisions = 20;
@@ -55,7 +55,7 @@ function startScene() {
     // if (path == null){
     //     console.log("path no tiene aun direccion, suba el archivo");
     // }
-        loadGltf("./src/other/", "Duck.gltf");
+        loadGltf(path);
     
     
 
@@ -86,9 +86,7 @@ function onWindowResize() {
 
 //cargar imagen
 
-function loadGltf(path2, nameGltfGet) {
-    var nameGltf = path2 + nameGltfGet
-    console.log(nameGltf);
+function loadGltf(path2) {
     // Instantiate a loader DUCK
     const loader = new THREE.GLTFLoader();
 
@@ -100,7 +98,7 @@ function loadGltf(path2, nameGltfGet) {
     // Load a glTF resource
     loader.load(
         // resource URL
-        nameGltf,
+        path2,
         // called when the resource is loaded
         function (gltf) {
 
@@ -135,6 +133,7 @@ function loadGltf(path2, nameGltfGet) {
 
 
 function validarExt(){
+    
     var archivoInput = document.getElementById('archivoInput');
     var archivoRuta = archivoInput.value;
     //var extCorrectas = /(.PNG|.png|.JPG|.jpg)$/i;
@@ -149,18 +148,17 @@ function validarExt(){
             ver.onload=function(e){
                 document.getElementById('visorArchivo').innerHTML = '<embed src="'+e.target.result+'"width= "200" height= "200">';
                 path = e.target.result;
-                console.log(path);
-                prueba = path.toString("asset");
-                console.log("esta prueba: "+prueba);
+                var cod=path.split(',')[1];
+
+                console.log("descodificado: "+path);
             };
-            // ver.readAsDataURL(archivoInput.files[0]);
+            ver.readAsDataURL(archivoInput.files[0]);
             //ver.readAsText(archivoInput.files[0]);
-            path = URL.createObjectURL(archivoInput.files[0]);
-            console.log("este es path2: "+path);
+            // path = URL.createObjectURL(archivoInput.files[0]);
+            console.log("este es path: "+path);
         }
     // }    
 }
-
 
 
 
@@ -196,3 +194,29 @@ function validarExt(){
 //         }  			
 //       });
 // }
+
+// function startScene(){
+//     // Configurar la escena, la cámara y el renderizador
+// const scene = new THREE.Scene();
+// const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+// const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('canvas') });
+// renderer.setSize(window.innerWidth, window.innerHeight);
+
+// // Agregar luz a la escena
+// const light = new THREE.HemisphereLight(0xffffff, 0x000000, 1);
+// scene.add(light);
+
+//     // Cargar el archivo del modelo
+//     const loadModel = (file) => {
+//         const loader = file.name.endsWith('.gltf') ? new THREE.GLTFLoader() : new THREE.OBJLoader();
+//         loader.load(URL.createObject);
+//         console.log("es: "+loader);
+//     }
+// }
+
+// function cargar(){
+
+// }
+
+
+

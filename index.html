@@ -48,6 +48,11 @@
     <a class="nav-link disabled" aria-disabled="true">Disabled</a>
   </nav>
 
+<!-- boton input
+
+<input type="file" id="modelFile" onclick="cargar()"/>
+        <canvas id="canvas"></canvas> -->
+
   <!-- Modal -->
   <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
@@ -66,10 +71,10 @@
           <form action="">
             <label class="btn-file" for="archivoInput">Previsualizar</label>
             <input type="file" id="archivoInput" onchange="return validarExt()" style="display: none;">
-            <button type="button" >subir</button>
-          </form>
+            <button type="button" onclick="startScene()">subir</button>
+          </form-->
 
-          <!--div class="file">
+          <div class="file">
             <h2 id="nombre"></h2>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <label for="archivo">Subir archivo</label>
@@ -103,6 +108,7 @@
       <p>By Joker</p>
     </footer>
   </div>
+  
 </body>
 
 </html>
