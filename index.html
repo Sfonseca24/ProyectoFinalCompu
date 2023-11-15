@@ -38,7 +38,7 @@
 
 </head>
 
-<body>
+<body onload="startScene()">
   <!--nav bar-->
   <nav class="nav">
     <a href="/index.html"><img class="logo" src="/src/imag/logonav.png" alt="logo navbar"></a>
@@ -51,6 +51,16 @@
     </div>
     <a class="nav-link" href="#"></a>
     <a class="nav-link disabled" aria-disabled="true"></a>
+
+    <!--menu desplegable-->
+    <ul id="menu">
+      <h1>Menu</h1>
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#">Sobre Nosotros</a></li>
+      <li><a href="#">Servicios</a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">Contacto</a></li>
+    </ul>
   </nav>
 
 <!-- boton input
@@ -76,7 +86,7 @@
           <form action="">
             <label class="btn-file" for="archivoInput">Previsualizar</label>
             <input type="file" id="archivoInput" onchange="return validarExt()" style="display: none;">
-            <button type="button" onclick="startScene()">subir</button>
+            <!--button type="button" >subir</button-->
           </form-->
 
           <div class="file">

@@ -1,9 +1,9 @@
 var scene = null,
     camera = null,
     renderer = null,
-    controls = null
-    prueba = null;
-    path;
+    controls = null,
+    prueba = null,
+    path = null;
 
 const size = 20,
     divisions = 20;
@@ -29,6 +29,8 @@ function startScene() {
 
     const lightAmbient = new THREE.AmbientLight(0xF00FFFF); // soft white light
     scene.add(lightAmbient);
+
+    //loadGltf(path);
 
     animate();
 }
@@ -112,14 +114,16 @@ function validarExt(){
         if (archivoInput.files && archivoInput.files[0]){
             var ver = new FileReader();
             ver.onload=function(e){
-                //document.getElementById('visorArchivo').innerHTML = '<embed src="'+e.target.result+'"width= "200" height= "200">';
+                document.getElementById('visorArchivo').innerHTML = '<embed src="'+e.target.result+'"width= "200" height= "200">';
                 path = e.target.result;
-                //var cod=path.split(',')[1];
+
+                console.log(path);
+                // var cod=path.split(',')[1];
             };
-            var ver2 =ver.readAsDataURL(archivoInput.files[0]);
+            ver.readAsDataURL(archivoInput.files[0]);
             //ver.readAsText(archivoInput.files[0]);
             // path = URL.createObjectURL(archivoInput.files[0]);
-            console.log("este es path final: "+ver2);
+            // console.log("este es path final: "+path);
         }
     // }    
 }
