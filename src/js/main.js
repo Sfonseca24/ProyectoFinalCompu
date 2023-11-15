@@ -8,72 +8,99 @@ var scene = null,
 const size = 20,
     divisions = 20;
 
-function startScene() {
-    // Scene, Camera, Renderer
-    scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x000); //33FFC5
-    camera = new THREE.PerspectiveCamera(
-        75,                                        //Angulo de visión(Abajo o arriba) 
-        window.innerWidth / window.innerHeight,    //Relación de aspecto 16:9
-        0.1,                                       //Mas cerca (no renderiza)
-        1000);                                    //Mas lejos ()
-
-    renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('cargarModels') });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
-
-    //Orbit controls
-    // controls = new THREE.OrbitControls(camera, renderer.domElement);
-
-    camera.position.set(0, 3, 0);
-
-    const lightAmbient = new THREE.AmbientLight(0xF00FFFF); // soft white light
-    scene.add(lightAmbient);
-
-    //loadGltf(path);
-
-    animate();
-}
-
-function animate() {
-    requestAnimationFrame(animate);
-    // controls.update();
-
-    // console.log(camera.position);
-}
-
-window.addEventListener('resize', onWindowResize, false);
-
-function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-}
+    function startScene() {
+        // Scene, Camera, Renderer
+        scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x33FFC5); //33FFC5
+        camera = new THREE.PerspectiveCamera(
+            75,                                        //Angulo de visión(Abajo o arriba) 
+            window.innerWidth / window.innerHeight,    //Relación de aspecto 16:9
+            0.1,                                       //Mas cerca (no renderiza)
+            1000);                                    //Mas lejos ()
+    
+        renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('cargarModels') });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+    
+        //Orbit controls
+        controls = new THREE.OrbitControls(camera, renderer.domElement);
+        camera.position.set(0, 8, 0);
+        camera.rotation.y = 1.5;
+        controls.update();
+    
+        //Grid Helper
+        const gridHelper = new THREE.GridHelper(size, divisions);
+        scene.add(gridHelper);
+    
+        //Axes Helper
+        // const axesHelper = new THREE.AxesHelper(5);
+        // scene.add(axesHelper);
+    
+        const lightAmbient = new THREE.AmbientLight(0xFFFFFF); // soft white light
+        scene.add(lightAmbient);
+    
+        // const light = new THREE.PointLight( 0xffffff, 1, 100 );
+        // light.position.set( 5,10,10 );
+        // scene.add( light );
+    
+    
+    
+    
+    
+        animate();
+        
+        //Duck Model
+        loadDuck_Gltf("../src/other", "../src/other/Duck.gltf");
+        //mousemove camera
+        //document.getElementById("Models3d").addEventListener("mousemove", moveCamera);
+    
+        
+    }
+    
+    function animate() {
+    
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+        //console.log(camera.position);
+        
+        
+    
+    }
+    
+    window.addEventListener('resize', onWindowResize, false);
+    
+    function onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    
+    }
 
 ///--------------------------------------///////////-------------------------------------///
 
 //cargar imagen
 
-function loadGltf(path2) {
+function loadDuck_Gltf(path, nameGltf) {
     // Instantiate a loader DUCK
     const loader = new THREE.GLTFLoader();
 
     // Optional: Provide a DRACOLoader instance to decode compressed mesh data
     const dracoLoader = new THREE.DRACOLoader();
-    dracoLoader.setDecoderPath(path2);
+    dracoLoader.setDecoderPath(path);
     loader.setDRACOLoader(dracoLoader);
 
     // Load a glTF resource
     loader.load(
         // resource URL
-        path2,
+        nameGltf,
         // called when the resource is loaded
         function (gltf) {
 
             scene.add(gltf.scene);
 
             gltf.animations; // Array<THREE.AnimationClip>
-            gltf.scene.position.set(0, 0, 0);
+            gltf.scene.position.set(10, 1, 10);
             gltf.scene.scale.set(2, 2, 2);// THREE.Group
             gltf.scenes; // Array<THREE.Group>
             gltf.cameras; // Array<THREE.Camera>
@@ -100,8 +127,8 @@ function loadGltf(path2) {
 //obtener archivo 3d y su direccion para cargar
 
 
-function validarExt(){
-    
+function validarExt() {
+
     var archivoInput = document.getElementById('archivoInput');
     var archivoRuta = archivoInput.value;
     //var extCorrectas = /(.PNG|.png|.JPG|.jpg)$/i;
@@ -111,20 +138,21 @@ function validarExt(){
     //     archivoInput.value='';
     //     return false;
     // }else{
-        if (archivoInput.files && archivoInput.files[0]){
-            var ver = new FileReader();
-            ver.onload=function(e){
-                document.getElementById('visorArchivo').innerHTML = '<embed src="'+e.target.result+'"width= "200" height= "200">';
-                path = e.target.result;
+    if (archivoInput.files && archivoInput.files[0]) {
+        var ver = new FileReader();
+        ver.onload = function (e) {
+            document.getElementById('visorArchivo').innerHTML = '<embed src="' + e.target.result + '"width= "200" height= "200">';
+            path = e.target.result;
 
-                console.log(path);
-                // var cod=path.split(',')[1];
-            };
-            ver.readAsDataURL(archivoInput.files[0]);
-            //ver.readAsText(archivoInput.files[0]);
-            // path = URL.createObjectURL(archivoInput.files[0]);
-            // console.log("este es path final: "+path);
-        }
+            console.log(path);
+            loadGltf("./src/other/");
+            // var cod=path.split(',')[1];
+        };
+        ver.readAsDataURL(archivoInput.files[0]);
+        //ver.readAsText(archivoInput.files[0]);
+        // path = URL.createObjectURL(archivoInput.files[0]);
+        // console.log("este es path final: "+path);
+    }
     // }    
 }
 
