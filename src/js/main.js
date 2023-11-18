@@ -81,19 +81,19 @@ const size = 20,
 
 //cargar imagen
 
-function loadDuck_Gltf(path, nameGltf) {
+function loadDuck_Gltf(path) {
     // Instantiate a loader DUCK
     const loader = new THREE.GLTFLoader();
 
-    // Optional: Provide a DRACOLoader instance to decode compressed mesh data
-    const dracoLoader = new THREE.DRACOLoader();
-    dracoLoader.setDecoderPath(path);
-    loader.setDRACOLoader(dracoLoader);
+    // // Optional: Provide a DRACOLoader instance to decode compressed mesh data
+    // const dracoLoader = new THREE.DRACOLoader();
+    // dracoLoader.setDecoderPath(path);
+    // loader.setDRACOLoader(dracoLoader);
 
     // Load a glTF resource
     loader.load(
         // resource URL
-        nameGltf,
+        path,
         // called when the resource is loaded
         function (gltf) {
 
@@ -147,7 +147,7 @@ function validarExt() {
             console.log(path);
             var remplazo = path.replace("application/octet-stream", "model/gltf-binary");
             console.log(remplazo);
-            loadDuck_Gltf("../src/other/", "../src/other/Duck.gltf");
+            loadDuck_Gltf(path);
             var cod=remplazo.split(',')[1];
             console.log("desencrip: "+cod);
             var string = path+".gltf";
@@ -157,6 +157,8 @@ function validarExt() {
             console.log(desencrip);
         };
         ver.readAsDataURL(archivoInput.files[0]);
+        console.log(archivoInput.files[0].name);
+        console.log(archivoInput.files[0].uri);
         //ver.readAsText(archivoInput.files[0]);
         // path = URL.createObjectURL(archivoInput.files[0]);
         // console.log("este es path final: "+path);
