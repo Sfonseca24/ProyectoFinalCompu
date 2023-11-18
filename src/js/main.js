@@ -3,7 +3,8 @@ var scene = null,
     renderer = null,
     controls = null,
     prueba = null,
-    path = null;
+    path = null,
+    path2 = null;
 
 const size = 20,
     divisions = 20;
@@ -100,8 +101,8 @@ function loadDuck_Gltf(path) {
             scene.add(gltf.scene);
 
             gltf.animations; // Array<THREE.AnimationClip>
-            gltf.scene.position.set(10, 1, 10);
-            gltf.scene.scale.set(2, 2, 2);// THREE.Group
+            gltf.scene.position.set(0, 1, 0);
+            gltf.scene.scale.set(10, 10, 10);// THREE.Group
             gltf.scenes; // Array<THREE.Group>
             gltf.cameras; // Array<THREE.Camera>
             gltf.asset; // Object
@@ -144,10 +145,10 @@ function validarExt() {
             document.getElementById('visorArchivo').innerHTML = '<embed src="' + e.target.result + '"width= "200" height= "200">';
             path = e.target.result;
 
-            console.log(path);
+            console.log("path: "+path);
             var remplazo = path.replace("application/octet-stream", "model/gltf-binary");
             console.log(remplazo);
-            loadDuck_Gltf(path);
+            loadDuck_Gltf(path2);
             var cod=remplazo.split(',')[1];
             console.log("desencrip: "+cod);
             var string = path+".gltf";
@@ -157,8 +158,9 @@ function validarExt() {
             console.log(desencrip);
         };
         ver.readAsDataURL(archivoInput.files[0]);
+        path2 = URL.createObjectURL(archivoInput.files[0]);
         console.log(archivoInput.files[0].name);
-        console.log(archivoInput.files[0].uri);
+        console.log(RL);
         //ver.readAsText(archivoInput.files[0]);
         // path = URL.createObjectURL(archivoInput.files[0]);
         // console.log("este es path final: "+path);
