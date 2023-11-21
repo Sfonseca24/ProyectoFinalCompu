@@ -132,13 +132,13 @@ function validarExt() {
 
     var archivoInput = document.getElementById('archivoInput');
     var archivoRuta = archivoInput.value;
-    //var extCorrectas = /(.PNG|.png|.JPG|.jpg)$/i;
+    var extCorrectas = /(.glb|.GLB|.gltf|.GLTF)$/i;
 
-    // if(!extCorrectas.exec(archivoRuta)){
-    //     alert('Solamente puede previsualizar arhivos .PNG o .JPG')
-    //     archivoInput.value='';
-    //     return false;
-    // }else{
+    if(!extCorrectas.exec(archivoRuta)){
+        alert('Solamente puede previsualizar arhivos .PNG o .JPG')
+        archivoInput.value='';
+        return false;
+    }else{
     if (archivoInput.files && archivoInput.files[0]) {
         var ver = new FileReader();
         ver.onload = function (e) {
@@ -150,7 +150,7 @@ function validarExt() {
             console.log(remplazo);
             loadDuck_Gltf(path2);
             var cod=remplazo.split(',')[1];
-            console.log("desencrip: "+cod);
+            console.log(path.name);
             var string = path+".gltf";
 
             console.log("este es estring: "+string);
@@ -160,12 +160,12 @@ function validarExt() {
         ver.readAsDataURL(archivoInput.files[0]);
         path2 = URL.createObjectURL(archivoInput.files[0]);
         console.log(archivoInput.files[0].name);
-        console.log(RL);
+        console.log(URL);
         //ver.readAsText(archivoInput.files[0]);
         // path = URL.createObjectURL(archivoInput.files[0]);
         // console.log("este es path final: "+path);
     }
-    // }    
+    }    
 }
 
 
