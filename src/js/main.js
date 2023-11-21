@@ -148,7 +148,7 @@ function validarExt() {
             console.log("path: "+path);
             var remplazo = path.replace("application/octet-stream", "model/gltf-binary");
             console.log(remplazo);
-            loadDuck_Gltf(path2);
+            loadDuck_Gltf(path);
             var cod=remplazo.split(',')[1];
             console.log(path.name);
             var string = path+".gltf";
@@ -158,7 +158,7 @@ function validarExt() {
             console.log(desencrip);
         };
         ver.readAsDataURL(archivoInput.files[0]);
-        path2 = URL.createObjectURL(archivoInput.files[0]);
+        URL.createObjectURL(archivoInput.files[0]);
         console.log(archivoInput.files[0].name);
         console.log(URL);
         //ver.readAsText(archivoInput.files[0]);
