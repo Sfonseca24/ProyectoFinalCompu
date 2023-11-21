@@ -37,12 +37,12 @@ const size = 20,
         // const axesHelper = new THREE.AxesHelper(5);
         // scene.add(axesHelper);
     
-        const lightAmbient = new THREE.AmbientLight(0xFFFFFF); // soft white light
+        const lightAmbient = new THREE.AmbientLight(0xfffff); // soft white light
         scene.add(lightAmbient);
     
-        // const light = new THREE.PointLight( 0xffffff, 1, 100 );
-        // light.position.set( 5,10,10 );
-        // scene.add( light );
+        const light = new THREE.PointLight( 0xffffff, 1, 100 );
+        light.position.set( 5,10,10 );
+        scene.add( light );
     
     
     
