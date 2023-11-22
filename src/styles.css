@@ -4,6 +4,12 @@
     
 }
 
+.letranav{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 50px;
+  padding-left: 20px;
+}
+
 .nav{
     padding-left: 40px;
     padding-top: 30px;
@@ -19,9 +25,9 @@
 .btn-file{
     display: block;
     padding: 8px 21px;
-    border: 1px solid blue;
+    border: 1px solid rgb(238, 69, 105);
     border-radius: 6px;
-    background-color: blue;
+    background-color: rgb(238, 69, 105);
     cursor: pointer;
     color: white;
 }
@@ -42,9 +48,9 @@
     width: 0; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
     z-index: 1; /* Stay on top */
-    top: 0;
+    top: 60px;
     left: 0;
-    background-color: #111; /* Black*/
+    background-color: #ffffff00; /* Black*/
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 60px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
@@ -65,7 +71,7 @@
 /* Position and style the close button (top right corner) */
 .sidenav .closebtn {
     position: absolute;
-    top: 0;
+    top: 25px;
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
@@ -148,3 +154,34 @@ a svg{
   }
 }
 
+/*animacion de logo y letra nav*/
+
+span{
+  animation: salto 1s infinite;
+  display: inline-block;
+  animation-timing-function: ease-in;
+  transform: translateY(0);
+}
+span:nth-child(1){
+  animation-delay: 0;
+}
+span:nth-child(2){
+  animation-delay: 0.2s;
+}span:nth-child(3){
+  animation-delay: 0.4s;
+}span:nth-child(4){
+  animation-delay: 0.6s;
+}span:nth-child(5){
+  animation-delay: 0.8s;
+}span:nth-child(6){
+  animation-delay: 0.10s;
+}
+@keyframes salto {
+  0%{
+    transform: translateY(0);
+  }
+  10%{
+    transform: translateY(-10px);
+  }
+  
+}
