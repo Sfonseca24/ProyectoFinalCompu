@@ -132,7 +132,15 @@ function loadDuck_Gltf(path) {
 
         }
     );
+    
+    // Load as usual, then revoke the blob URLs.
+loader = new THREE.GLTFLoader( manager );
+loader.load( 'fish.gltf', (gltf) => {
 
+	scene.add( gltf.scene );
+	objectURLs.forEach( ( url ) => URL.revokeObjectURL( url ) );
+
+});
 
 }
 
@@ -145,18 +153,61 @@ function Upload3d() {
     var archivoRuta = archivoInput.value;
     var extCorrectas = /(.glb|.GLB|.gltf|.GLTF)$/i;
 
+<<<<<<< Updated upstream
     if(!extCorrectas.exec(archivoRuta)){
         alert('Solamente puede previsualizar arhivos .PNG o .JPG')
         archivoInput.value='';
         return false;
     }else{
+=======
+    // if(!extCorrectas.exec(archivoRuta)){
+    //     alert('Solamente puede previsualizar arhivos .PNG o .JPG')
+    //     archivoInput.value='';
+    //     return false;
+    // }else{
+        for (let i = 0; i < array.length; i++) {
+            
+            if (archivoInput.files && archivoInput.files[i]) {
+                var ver = new FileReader();
+                ver.onload = function (e) {
+                    document.getElementById('visorArchivo').innerHTML = '<embed src="' + e.target.result + '"width= "200" height= "200">';
+                    path = e.target.result;
+        
+        
+                    manager.onStart(ver.readAsDataURL(archivoInput.files[i]), archivoInput.files[i], files.length);
+                    console.log(path);
+                    var remplazo = path.replace("application/octet-stream", "model/gltf-binary");
+                    console.log(remplazo);
+                    loadDuck_Gltf("../src/other/", "../src/other/Duck.gltf");
+                    var cod=remplazo.split(',')[1];
+                    console.log("desencrip: "+cod);
+                    var string = path+".gltf";
+        
+                    console.log("este es estring: "+string);
+                    var desencrip = atob(cod);
+                    console.log(desencrip);
+                };
+                ver.readAsDataURL(archivoInput.files[i]);
+                //ver.readAsText(archivoInput.files[0]);
+                // path = URL.createObjectURL(archivoInput.files[0]);
+                // console.log("este es path final: "+path);
+            }
+            
+        }
+>>>>>>> Stashed changes
     if (archivoInput.files && archivoInput.files[0]) {
         var ver = new FileReader();
         ver.onload = function (e) {
         
             path = e.target.result;
 
+<<<<<<< Updated upstream
             // console.log("path: "+path);
+=======
+
+        if()
+            console.log(path);
+>>>>>>> Stashed changes
             var remplazo = path.replace("application/octet-stream", "model/gltf-binary");
             // console.log(remplazo);
             loadDuck_Gltf(path);
@@ -177,6 +228,7 @@ function Upload3d() {
     }    
 }
 
+<<<<<<< Updated upstream
 function CambiarVista(key){
     switch (key) {
         case "arriba":
@@ -200,6 +252,45 @@ function CambiarVista(key){
     }
     
 }
+=======
+const manager = new THREE.LoadingManager();
+manager.onStart = function ( url, itemsLoaded, itemsTotal ) {
+	console.log( 'Started loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
+};
+
+manager.onLoad = function ( ) {
+	console.log( 'Loading complete!');
+};
+
+manager.onProgress = function ( url, itemsLoaded, itemsTotal ) {
+	console.log( 'Loading file: ' + url + '.\nLoaded ' + itemsLoaded + ' of ' + itemsTotal + ' files.' );
+};
+
+manager.onError = function ( url ) {
+	console.log( 'There was an error loading ' + url );
+};
+
+const loader = new THREE.OBJLoader( manager );
+loader.load( 'file.obj', function ( object ) {
+	//
+} );
+
+// Blob or File objects created when dragging files into the webpage.
+const blobs = {'fish.gltf': blob1, 'diffuse.png': blob2, 'normal.png': blob3};
+
+const manager = new THREE.LoadingManager();
+
+// Initialize loading manager with URL callback.
+const objectURLs = [];
+manager.setURLModifier( ( url ) => {
+
+	url = URL.createObjectURL( blobs[ url ] );
+	objectURLs.push( url );
+	return url;
+
+} );
+
+>>>>>>> Stashed changes
 
 // function CambiarCaracteristicas(option){
 //     switch (option) {
