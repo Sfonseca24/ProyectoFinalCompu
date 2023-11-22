@@ -129,7 +129,7 @@ function loadDuck_Gltf(path) {
 //obtener archivo 3d y su direccion para cargar
 
 
-function validarExt() {
+function Upload3d() {
 
     var archivoInput = document.getElementById('archivoInput');
     var archivoRuta = archivoInput.value;
@@ -143,7 +143,6 @@ function validarExt() {
     if (archivoInput.files && archivoInput.files[0]) {
         var ver = new FileReader();
         ver.onload = function (e) {
-            document.getElementById('visorArchivo').innerHTML = '<embed src="' + e.target.result + '"width= "200" height= "200">';
             path = e.target.result;
 
             // console.log("path: "+path);
@@ -166,8 +165,3 @@ function validarExt() {
     }
     }    
 }
-
-
-
-
-
