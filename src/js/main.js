@@ -231,38 +231,38 @@ function Añadirquitar(option){
             break;
             case "gridHelper":
                 var grid = document.getElementById('flexCheckDefault2');
-            if (grid.value=="true"){
+            if (grid.value=="false"){
                 
                 scene.add(gridHelper);
-                grid.value = "false";
-            }else if(grid.value=="false"){
-                scene.remove(gridHelper);
                 grid.value = "true";
+            }else if(grid.value=="true"){
+                scene.remove(gridHelper);
+                grid.value = "false";
             }
                 
             break;
             case "lightAmbient":
                 var ambient = document.getElementById('flexCheckDefault3');
-            if (ambient.value=="true"){
+            if (ambient.value=="false"){
                 
                 scene.add(lightAmbient);
-                ambient.value = "false";
-            }else if(ambient.value=="false"){
-                scene.remove(lightAmbient);
                 ambient.value = "true";
+            }else if(ambient.value=="true"){
+                scene.remove(lightAmbient);
+                ambient.value = "false";
             }
                 
             break;
 
             case "axesHelper":
                 var axes = document.getElementById('flexCheckDefault4');
-            if (axes.value=="true"){
+            if (axes.value=="false"){
                 
                 scene.add(axesHelper);
-                axes.value = "false";
-            }else if(axes.value=="false"){
-                scene.remove(axesHelper);
                 axes.value = "true";
+            }else if(axes.value=="true"){
+                scene.remove(axesHelper);
+                axes.value = "false";
             }
                 
             break;
