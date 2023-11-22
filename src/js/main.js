@@ -25,9 +25,10 @@ const size = 20,
     
         //Orbit controls
         controls = new THREE.OrbitControls(camera, renderer.domElement);
-        camera.position.set(0, 8, 0);
+        camera.position.set(8, 7, 8);
         camera.rotation.y = 1.5;
         controls.update();
+    
     
         //Grid Helper
         const gridHelper = new THREE.GridHelper(size, divisions);
@@ -63,7 +64,7 @@ const size = 20,
         requestAnimationFrame(animate);
         controls.update();
         renderer.render(scene, camera);
-        //console.log(camera.position);
+        // console.log(camera.position);
         
         
     
@@ -145,22 +146,20 @@ function validarExt() {
             document.getElementById('visorArchivo').innerHTML = '<embed src="' + e.target.result + '"width= "200" height= "200">';
             path = e.target.result;
 
-            console.log("path: "+path);
+            // console.log("path: "+path);
             var remplazo = path.replace("application/octet-stream", "model/gltf-binary");
-            console.log(remplazo);
+            // console.log(remplazo);
             loadDuck_Gltf(path);
-            var cod=remplazo.split(',')[1];
-            console.log(path.name);
-            var string = path+".gltf";
+            // var cod=remplazo.split(',')[1];
+            // console.log(path.name);
+            // var string = path+".gltf";
 
-            console.log("este es estring: "+string);
-            var desencrip = atob(cod);
-            console.log(desencrip);
+            // console.log("este es estring: "+string);
+            // var desencrip = atob(cod);
+            // console.log(desencrip);
         };
         ver.readAsDataURL(archivoInput.files[0]);
         URL.createObjectURL(archivoInput.files[0]);
-        console.log(archivoInput.files[0].name);
-        console.log(URL);
         //ver.readAsText(archivoInput.files[0]);
         // path = URL.createObjectURL(archivoInput.files[0]);
         // console.log("este es path final: "+path);
