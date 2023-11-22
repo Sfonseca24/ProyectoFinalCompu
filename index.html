@@ -51,36 +51,59 @@
     <button id="boton-save" type="button" data-toggle="modal" data-target="#exampleModalCenter" >
       <img class="logo" style="margin-left: 50px;" src="/src/imag/folder.png" alt="abrirArchivo">
     </button>
+    <div style="margin-top: 30px;">
+    <button id="boton-save" type="button" >
+      <img class="logo" onclick="eliminar3d()" style="margin-left: 50px;" src="/src/imag/eliminar.png" alt="abrirArchivo">
+    </button>
+  </div>
   </div>
 
   <nav class="nav">
 
     <a href="#" onclick="openNav()" ><span><img src="./src/imag/logonav.png" alt="Menu" class="logo"></span></a>
-    <h1 class="letranav"><section>
+    <h1 class="letranav" ><section>
+      <a href="/main3.html">
       <span>3</span>
       <span>D</span>
       <span>M</span>
       <span>A</span>
-      <span>X</span>
+      <span>X</span></a>
     </section></h1>
     <!--logo page-->
-    <div id="botonVistas">
+
+    <div id="botonVistas"></div>
       <div class="dropdown" >
 
-        <button class="dropbtn"><img src="/src/imag/setting.png" class="logo" alt=""></button>
+        <button class="dropbtn"><img src="/src/imag/vista.png" class="logo" alt="" style="cursor: pointer;"></button>
        
         <div class="dropdown-content">
        
-           <a href="#">Opción 1</a>
+           <a style="cursor: pointer;" onclick="CambiarVista('frontal')">Vista Frontal</a>
        
-           <a href="#">Opción 2</a>
+           <a style="cursor: pointer;" onclick="CambiarVista('lateral')">Vista Lateral</a>
        
-           <a href="#">Opción 3</a>
+           <a style="cursor: pointer;" onclick="CambiarVista('arriba')">Vista Superior</a>
+          
+           <a style="cursor: pointer;" onclick="CambiarVista('abajo')">Vista Inferior</a>
+
+           <a style="cursor: pointer;" onclick="CambiarVista('perspectiva')">Vista Perspectiva</a>
+        </div>
+     
+    </div>
+
+    
+      <div class="dropdown" style="margin-left: 50px; " >
+
+        <button class="dropbtn"><img src="/src/imag/information-button.png" class="logo" alt=""></button>
        
+        <div class="dropdown-content" style="text-align: center;">
+       
+           <p>En el render podras visualizar tus modelos 3D de extension gltf y glb, podras expolrar y observarlos en diferentes escalas, ademas podras ver sus diferentes vistas.</p>
         </div>
        
        </div>
     </div>
+
     
     
 
